@@ -1,0 +1,6 @@
+artifact_location: file:///workspaces/lgcns-mlops-team3/mlruns/523333031831737621
+creation_time: 1723098571420
+experiment_id: '523333031831737621'
+last_update_time: 1723098571420
+lifecycle_stage: active
+name: new_experiment_with_log

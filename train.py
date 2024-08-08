@@ -30,9 +30,8 @@ if __name__ == "__main__":
     train_df = pd.read_csv(os.path.join(DATA_PATH, "bike_sharing_train.csv"))
     logger.debug("Load data")
 
-    _X = train_df.drop(["rent", "area_locality", "posted_on"], axis=1)
-    y = np.log1p(train_df["rent"])
-    X = preprocess_pipeline.fit_transform(X=_X, y=y)
+    X = train_df.drop(["count", "datetime"], axis=1)
+    y = train_df["count"].to_numpy()
 
     # Data storage - 피처 데이터 저장
     if not os.path.exists(os.path.join(DATA_PATH, "storage")):
@@ -65,9 +64,9 @@ if __name__ == "__main__":
         with mlflow.start_run(run_name=f"Run {i}"):
             regr = GradientBoostingRegressor(**params)
             pipeline = Pipeline(
-                [("preprocessor", preprocess_pipeline), ("regr", regr)]
+                [("regr", regr)]
             )
-            pipeline.fit(_X, y)
+            pipeline.fit(X, y)
 
             # get evaluations scores
             score_cv = rmse_cv_score(regr, X, y)

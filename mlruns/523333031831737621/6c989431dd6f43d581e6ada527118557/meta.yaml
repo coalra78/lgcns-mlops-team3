@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/lgcns-mlops-team3/mlruns/523333031831737621/6c989431dd6f43d581e6ada527118557/artifacts
+end_time: 1723098652427
+entry_point_name: ''
+experiment_id: '523333031831737621'
+lifecycle_stage: active
+run_id: 6c989431dd6f43d581e6ada527118557
+run_name: Run 23
+run_uuid: 6c989431dd6f43d581e6ada527118557
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723098649426
+status: 3
+tags: []
+user_id: codespace
