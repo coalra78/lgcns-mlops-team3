@@ -27,7 +27,7 @@ warnings.filterwarnings(action="ignore")
 
 
 if __name__ == "__main__":
-    train_df = pd.read_csv(os.path.join(DATA_PATH, "house_rent_train.csv"))
+    train_df = pd.read_csv(os.path.join(DATA_PATH, "bike_sharing_train.csv"))
     logger.debug("Load data")
 
     _X = train_df.drop(["rent", "area_locality", "posted_on"], axis=1)
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     if not os.path.exists(os.path.join(DATA_PATH, "storage")):
         os.makedirs(os.path.join(DATA_PATH, "storage"))
     X.assign(rent=y).to_csv(
-        os.path.join(DATA_PATH, "storage", "house_rent_train_features.csv"),
+        os.path.join(DATA_PATH, "storage", "bike_sharing_train_features.csv"),
         index=False,
     )
 
@@ -123,7 +123,7 @@ if __name__ == "__main__":
     copy_tree(best_model_uri.replace("file://", ""), ARTIFACT_PATH)
 
     bentoml.sklearn.save_model(
-        name="house_rent",
+        name="bike_sharing",
         model=mlflow.sklearn.load_model(best_model_uri),
         signatures={"predict": {"batchable": True, "batch_dim": 0}},
         metadata=best_params,
